@@ -1,0 +1,38 @@
+.home {
+    position: relative;
+}
+
+.addBlog {
+top: 85%;
+/* bottom: ; */
+}
+
+
+
+.addBlog p {
+    display: none;
+    width: 0px;
+    transition: all 0.5s ease;
+}
+
+
+@media only  screen  and (min-width: 500px){
+    .addBlog {
+        cursor: pointer;
+        position: fixed;
+        top: 150px;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        transition: all 0.2s ease;
+    }
+    .addBlog:hover {
+        top: 146px;
+        box-shadow: 0 3px 10px 10px black;
+    }
+    
+    .addBlog:hover p {
+        display: block;
+        width: fit-content;
+    }
+}

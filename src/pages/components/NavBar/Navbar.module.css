@@ -11,28 +11,46 @@
     padding: 20px 25px 20px 25px;
     border-radius: 40px;
     position: relative;
-     height:90px ;
+    height: 90px;
 
 }
 
 .logo {
     max-width: 80px;
-    transition:all 0.1s ease ;
+    transition: all 0.1s ease;
 }
 
 .logo:hover {
     padding-bottom: 5px;
 }
-.icons{
+
+.icons {
     width: 1.75rem;
     height: 1.75rem;
-    transition:all 0.1s ease ;
+    transition: all 0.1s ease;
     margin-right: 20px;
     cursor: pointer;
 }
-.icons:hover{
+
+.icons:hover {
     margin-bottom: 5px;
 }
+
+.options {
+    display: none;
+}
+
+.social {
+    display: none;
+}
+
+.bars {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: block;
+}
+
 @media only screen and (min-width:400px) {
     .logo {
         max-width: 120px;
@@ -42,5 +60,16 @@
 @media only screen and (min-width:600px) {
     .logo {
         max-width: 150px;
+    }
+    .options {
+        display: block;
+    }
+}
+@media only screen and (min-width:900px){
+    .social {
+        display: flex;
+    }
+    .bars{
+        display: none;
     }
 }

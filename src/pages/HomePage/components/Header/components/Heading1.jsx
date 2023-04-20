@@ -1,7 +1,6 @@
 import React from "react";
 import classes from "../Header.module.css";
 const Heading1 = ({ data }) => {
-  console.log(data);
   return (
     <div
       className={` max-h-[430px] rounded-xl relative border border-gray-700 px-4 py-5`}
