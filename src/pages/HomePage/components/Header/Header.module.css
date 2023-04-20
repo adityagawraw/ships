@@ -1,0 +1,42 @@
+.header{
+   padding: 2px 20px 2px 20px;
+    align-items: center;
+    gap: 10px;
+    max-width: 1000px;
+    align-items: end;
+}
+
+.headerContent{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 25px 24px 25px 24px;
+    cursor: pointer;
+    border-radius: 10px;
+    }
+    
+@media only screen and (min-width: 900px) {
+    .header{
+        display: grid;
+        grid-template-columns: 1.6fr 1fr;
+        gap: 10px;
+        max-width: 1000px;
+        align-items: end;
+    }
+    .headerContent{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+   
+      
+      
+        }
+}
+
+
