@@ -1,12 +1,46 @@
-.nav{
-    margin: 30px 20px 4px 20px ;
+.nav {
+    margin: 15px 20px 4px 20px;
 }
-.navContent{
-    background-color: rgb(164, 160, 160);
-    padding: 1px 25px 1px 25px;
-    border-radius:40px;
+
+.navContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    border: 1px solid rgb(130, 130, 130);
+    padding: 20px 25px 20px 25px;
+    border-radius: 40px;
+    position: relative;
+     height:90px ;
+
 }
-.logo{
-    font-size: 30px;
-    color: white;
+
+.logo {
+    max-width: 80px;
+    transition:all 0.1s ease ;
+}
+
+.logo:hover {
+    padding-bottom: 5px;
+}
+.icons{
+    width: 1.75rem;
+    height: 1.75rem;
+    transition:all 0.1s ease ;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.icons:hover{
+    margin-bottom: 5px;
+}
+@media only screen and (min-width:400px) {
+    .logo {
+        max-width: 120px;
+    }
+}
+
+@media only screen and (min-width:600px) {
+    .logo {
+        max-width: 150px;
+    }
 }

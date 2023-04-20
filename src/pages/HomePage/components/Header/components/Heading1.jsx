@@ -10,7 +10,7 @@ const Heading1 = ({ data }) => {
       <img
         src={data?.image}
         alt=""
-        className="rounded-lg border border-gray-700 w-[100%] h-[100%]"
+        className="rounded-lg border border-gray-700 object-cover max-w-[100%] max-h-[400px]"
       />
       <div className={classes.headerContent}>
         <div className="flex justify-end w-full">

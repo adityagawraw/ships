@@ -2,15 +2,15 @@ import React from 'react'
 
 const Cards2 = () => {
   return (
-    <div className="relative cursor-default rounded-lg max-w-[340px] max-h-[450px] px-2 py-2 border border-gray-700 my-2 bg-[#f0f0ff]">
+    <div className="relative cursor-default rounded-lg max-w-[640px] max-h-[450px] px-2 py-2 border border-gray-700 my-2 bg-[#f0f0ff]">
       <div>
         <img
           src="/images/nintendo.jpg"
           alt=""
-          className="rounded-lg object-contain"
+          className="rounded-lg max-w-[300px] object-contain"
         />
-         <div className="absolute top-4 right-4 ">
-          <div className="bg-white flex items-center rounded-3xl px-2 border border-gray-700">
+         <div className=" ">
+          <div className="bg-white flex items-center rounded-3xl px-2 border border-gray-700 w-fit">
             <div className="w-2 h-2 mr-2 rounded-full bg-black"></div>
             <p>Games</p>
           </div>

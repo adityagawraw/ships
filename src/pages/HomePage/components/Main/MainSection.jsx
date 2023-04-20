@@ -12,18 +12,15 @@ const MainSection = () => {
         <Cards1 />
         <Cards1 />
         <Cards1 />
-        <Cards1 />
-        <Cards1 />
-        <Cards1 />
-        <Cards1 />
-        <Cards1 />
-        <Cards1 />
       </div>
       <div className="flex justify-center my-5">
-        <button className="px-2 py-1 border border-gray-700 rounded-3xl">
+        <button className="px-2 py-1 border border-gray-700 bg-white rounded-3xl">
           Load More
         </button>
       </div>
+      {/* <div>
+        <Cards2/>
+      </div> */}
     </div>
   );
 };
