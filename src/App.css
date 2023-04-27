@@ -1,3 +1,10 @@
-/* body{
-    background-color: rgba(0, 0, 0, 0.923);
-} */
+body::-webkit-scrollbar{
+    background-color: rgb(235, 235, 235);
+    width: 12px;
+    visibility: none;
+}
+body::-webkit-scrollbar-thumb{
+ background-color: rgb(186, 185, 185);
+ border: 1px solid gray;
+ border-radius: 5px;
+}

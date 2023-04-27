@@ -10,7 +10,8 @@ import { useSelector } from 'react-redux';
 const Home = () => {
 const [modal, setModal] = useState(false);
 const state = useSelector(store=> store.auth);
-console.log(state)
+
+window.scroll({top:0, left:0})
 const getBlogs = async ()=>{
   try {
     const response = await fetch('https://blogserver.vercel.app/api/v1/blog') ;
@@ -20,12 +21,13 @@ const getBlogs = async ()=>{
     console.log(error)
   }
 }
-useEffect(()=>{
-getBlogs();
-},[])
+
+// useEffect(()=>{
+// getBlogs();
+// },[])
   return (
-    <div className={classes.home}>
-      <img src={'/images/5335387.jpg'} alt="" className='fixed w-[100vw] h-[100vh] top-1 z-[-1] object-cover'/>
+    <div onScroll={()=>{console.log('hello')}} className={`${classes.home}`}>
+      <img src={'/images/820.jpg'} alt="" className='fixed w-[100vw] h-[100vh] top-1 z-[-1] object-cover'/>
       <div>
         <NavBar/>
         <Header/>

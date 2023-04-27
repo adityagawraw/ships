@@ -1,5 +1,12 @@
 .nav {
     margin: 15px 20px 4px 20px;
+   
+}
+.navFixed {
+    margin: 0px 12px 4px 0px;
+    width: 100vw;
+    position: fixed;
+    z-index: 5;
 }
 
 .navContent {
@@ -12,9 +19,18 @@
     border-radius: 40px;
     position: relative;
     height: 90px;
+}
+.navContentFixed{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    border-bottom: 1px solid rgb(130, 130, 130);
+    padding: 20px 25px 20px 25px;
+    position: relative;
+    height: 90px;
 
 }
-
 .logo {
     max-width: 80px;
     transition: all 0.1s ease;
@@ -49,9 +65,11 @@
     width: 30px;
     height: 30px;
     display: block;
+    
 }
 
 .signin:hover {
+    transition: all 0.3s ease-in-out;
     margin-bottom: 5px;
     margin-left: 2px;
     box-shadow: 4px 4px 0px 0px black;
@@ -64,7 +82,9 @@
     box-shadow: 3px 3px 0px 0px black;
     background-color: #3374fe;
 }
-
+.dropdown{
+    position: fixed;
+}
 @media only screen and (min-width:400px) {
     .logo {
         max-width: 120px;
