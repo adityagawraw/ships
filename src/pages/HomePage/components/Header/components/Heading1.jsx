@@ -1,7 +1,9 @@
 import React from "react";
 import classes from "../Header.module.css";
+import { Link } from "react-router-dom";
 const Heading1 = ({ data }) => {
   return (
+    <Link to={'/blog'}>
     <div
       className={` max-h-[430px] rounded-xl relative border border-gray-700 px-4 py-5`}
       style={{ backgroundColor: data?.color }}
@@ -33,6 +35,7 @@ const Heading1 = ({ data }) => {
         </div>
       </div>
     </div>
+    </Link>
   );
 };
 

@@ -51,6 +51,20 @@
     display: block;
 }
 
+.signin:hover {
+    margin-bottom: 5px;
+    margin-left: 2px;
+    box-shadow: 4px 4px 0px 0px black;
+    background-color: #3374fe;
+}
+
+.signin:active {
+    margin-bottom: 3px;
+    margin-left: 1px;
+    box-shadow: 3px 3px 0px 0px black;
+    background-color: #3374fe;
+}
+
 @media only screen and (min-width:400px) {
     .logo {
         max-width: 120px;
@@ -61,15 +75,18 @@
     .logo {
         max-width: 150px;
     }
+
     .options {
         display: block;
     }
 }
-@media only screen and (min-width:900px){
+
+@media only screen and (min-width:900px) {
     .social {
         display: flex;
     }
-    .bars{
+
+    .bars {
         display: none;
     }
 }
