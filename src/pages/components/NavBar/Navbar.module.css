@@ -1,7 +1,8 @@
 .nav {
     margin: 15px 20px 4px 20px;
-   
+
 }
+
 .navFixed {
     margin: 0px 12px 4px 0px;
     width: 100vw;
@@ -20,7 +21,8 @@
     position: relative;
     height: 90px;
 }
-.navContentFixed{
+
+.navContentFixed {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -31,6 +33,7 @@
     height: 90px;
 
 }
+
 .logo {
     max-width: 80px;
     transition: all 0.1s ease;
@@ -65,11 +68,11 @@
     width: 30px;
     height: 30px;
     display: block;
-    
+
 }
 
 .signin:hover {
-    transition: all 0.3s ease-in-out;
+    transition: all 0.1s ease-out;
     margin-bottom: 5px;
     margin-left: 2px;
     box-shadow: 4px 4px 0px 0px black;
@@ -77,14 +80,29 @@
 }
 
 .signin:active {
-    margin-bottom: 3px;
-    margin-left: 1px;
+    margin-bottom: 1px;
+
     box-shadow: 3px 3px 0px 0px black;
     background-color: #3374fe;
 }
-.dropdown{
-    position: fixed;
+
+.dropdown {
+    position: relative;
+    z-index: 10;
+    margin: 0px 35px 0px 35px;
+    background-color: white;
+    border-left: 1px solid rgb(75 85 99);
+    border-right: 1px solid rgb(75 85 99);
+    transition: content 0.3s ease-in-out;
 }
+
+.dropdownFixed {
+    position: relative;
+    z-index: 10;
+    background-color: white;
+    transition: content 0.3s ease-in-out;
+}
+
 @media only screen and (min-width:400px) {
     .logo {
         max-width: 120px;

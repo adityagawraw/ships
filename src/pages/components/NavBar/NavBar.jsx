@@ -8,16 +8,24 @@ import {
 } from "react-icons/ai";
 import { GoThreeBars } from "react-icons/go";
 import { Link } from "react-router-dom";
+import NavDropdown from "./NavDropdown";
+import { useDispatch, useSelector } from "react-redux";
+import { openSignin } from "../../../features/navbarSlice";
+
+
 const NavBar = () => {
   const [dropdown, setDropDown] = useState(false);
   const [fixed, setFixed] = useState(false);
+  const dispatch = useDispatch();
+  const {signin} = useSelector(state => state.navbar);
+  console.log(signin)
   window.addEventListener("scroll", () => {
     window.pageYOffset >= 32 ? setFixed(true) : setFixed(false);
   });
   return (
     <div>
       {fixed ? (
-        <NavBarFixed />
+        <NavBarFixed dispatch={dispatch} fixed={fixed} dropdown={dropdown} setDropDown={setDropDown}/>
       ) : (
         <div className={classes.nav}>
           <div className={classes.navContent}>
@@ -49,6 +57,9 @@ const NavBar = () => {
               <AiFillYoutube className={`text-red-600 ${classes.icons}`} />
               <div className="w-[100px]">
                 <button
+                onClick={()=>{
+                  dispatch(openSignin({signin:true}))
+                }}
                   className={`${classes.signin} hover:text-white active:text-white font-semibold px-2 mx-1 border border-gray-500 rounded-full`}
                 >
                   Sign In
@@ -60,6 +71,8 @@ const NavBar = () => {
               className={classes.bars}
             />
           </div>
+          {dropdown && <NavDropdown  fixed={fixed}/>}
+          
         </div>
       )}
     </div>
@@ -68,7 +81,7 @@ const NavBar = () => {
 
 export default NavBar;
 
-const NavBarFixed = () => {
+const NavBarFixed = ({dropdown, fixed, setDropDown , dispatch}) => {
   return (
     <div className={classes.navFixed}>
       <div className={classes.navContentFixed}>
@@ -100,14 +113,20 @@ const NavBarFixed = () => {
           <AiFillYoutube className={`text-red-600 ${classes.icons}`} />
           <div className="w-[100px]">
             <button
+            onClick={()=>{
+              dispatch(openSignin({signin:true}))
+            }}
               className={`${classes.signin} hover:text-white active:text-white font-semibold px-2 mx-1 border border-gray-500 rounded-full`}
             >
               Sign In
             </button>
           </div>
         </div>
-        <GoThreeBars className={classes.bars} />
+        <GoThreeBars
+        onClick={()=>setDropDown(prev=>!prev)}
+        className={classes.bars} />
       </div>
+      {dropdown && <NavDropdown fixed={fixed}/>}
     </div>
   );
 };

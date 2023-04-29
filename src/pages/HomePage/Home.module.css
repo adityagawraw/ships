@@ -1,11 +1,9 @@
 .home {
-    position: relative;
-    
+    position: relative;   
 }
 
 .addBlog {
     top: 85%;
-    /* bottom: ; */
 }
 
 .addBlog p {

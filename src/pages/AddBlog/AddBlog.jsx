@@ -1,13 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./AddBlog.module.css";
 import { RxCross2 } from "react-icons/rx";
+import axios from "axios";
 const AddBlog = ({ modal, setModal }) => {
   const [blogData, setBlogData] = useState({
     title: "",
+    author:"aditya1",
     category: "",
-    summary: "",
     content: "",
+    tags:[]
   });
+  
+ 
+  const postBlog =async(e)=>{
+    e.preventDefault();
+    try {
+      const response =  await axios.post('https://blogserver.vercel.app/api/v1/blog',blogData);
+      console.log(response)
+    } catch (error) {
+      console.log(error);
+    }
+  
+  }
 
   const handleBlogDataChange = (e) => {
     setBlogData((prev) => {
@@ -18,13 +32,14 @@ const AddBlog = ({ modal, setModal }) => {
   if (!modal) return null;
   return (
     <div className={classes.modal}>
-      <div className={`${classes.content} px-4 py-4 bg-[#fffacd] h-[96%] md:h-[80%] w-[80%]  md:w-[70%] lg:w-[60%]  rounded-lg border border-gray-700`}>
+      <div className={`${classes.content}  px-4 py-4 bg-white h-[80%] md:h-[80%] w-[80%]  md:w-[70%] lg:w-[60%]  rounded-lg border border-gray-700`}>
         <div className="flex justify-end">
           <RxCross2
             onClick={() => setModal(false)}
             className="w-5 h-5 cursor-pointer"
           />
         </div>
+        <form onSubmit={postBlog}>
         <div>
           <p className="text-gray-800 font-bold text-base md:text-xl">Title</p>
           <input
@@ -32,7 +47,7 @@ const AddBlog = ({ modal, setModal }) => {
             name="title"
             value={blogData.title}
             onChange={handleBlogDataChange}
-            className="outline-none  py-1 md:py-2 px-1 md:px-2 border border-gray-700 rounded w-full my-2"
+            className="outline-none   py-1 md:py-2 px-1 md:px-2 border border-gray-700 rounded w-full my-2"
           />
         </div>
         <div>
@@ -53,17 +68,7 @@ const AddBlog = ({ modal, setModal }) => {
           />
         </div>
         <div>
-          <p className="text-gray-800 font-bold text-base md:text-xl ">Info</p>
-          <textarea
-            type="text"
-            name="summary"
-            value={blogData.summary}
-            onChange={handleBlogDataChange}
-            className="resize-none outline-none py-1 md:py-2 px-1 md:px-2 border border-gray-700 rounded w-full my-2"
-          />
-        </div>
-        <div>
-          <p className="text-gray-800 font-bold text-base md:text-xl ">Description</p>
+          <p className="text-gray-800 font-bold text-base md:text-xl">Description</p>
           <textarea
             type="text"
             name="content"
@@ -77,6 +82,7 @@ const AddBlog = ({ modal, setModal }) => {
             Submit
           </button>
         </div>
+        </form>
       </div>
     </div>
   );
