@@ -5,11 +5,12 @@ import Home from './pages/HomePage/Home';
 import BlogDetails from './pages/BlogDetails/BlogDetails';
 import { useSelector } from 'react-redux';
 import UserAccount from './pages/UserAccount/UserAccount';
+import { Toaster } from 'react-hot-toast';
 
 
 function App() {
   const {signin} = useSelector(state => state.navbar);
-  console.log(signin)
+
   return (
     <div >
       <Routes>
@@ -19,6 +20,7 @@ function App() {
       {
           signin && <UserAccount/>
       }
+      <Toaster/>
     </div>
   );
 }

@@ -1,0 +1,58 @@
+.blogSection{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 100px;
+}
+.addBlog {
+    top: 85%;
+}
+
+.addBlog p {
+    display: none;
+    width: 0px;
+    transition: all 0.5s ease;
+}
+
+.scroll {
+    bottom: 4%;
+    right: 1%;
+}
+
+.scroll p {
+    display: none;
+    width: 0px;
+    transition: all 0.5s ease;
+}
+
+@media only screen and (min-width: 500px) {
+    .addBlog {
+        cursor: pointer;
+        position: fixed;
+        top: 150px;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        transition: all 0.1s ease;
+    }
+
+    .addBlog:hover {
+        top: 146px;
+        box-shadow: 2px 3px 1px 1px black;
+    }
+
+    .addBlog:hover p {
+        display: block;
+        width: fit-content;
+    }
+
+    .scroll {
+        bottom: 5%;
+        right: 2%;
+    }
+
+    .scroll:hover {
+        bottom: 5.4%;
+        box-shadow: 2px 3px 1px 1px black;
+    }
+
+}

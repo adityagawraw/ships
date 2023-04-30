@@ -1,26 +1,40 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { AiFillEye, AiOutlineEye, AiOutlineMail } from "react-icons/ai";
-
+import { useDispatch } from "react-redux";
+import { login } from "../../../features/auth-slice";
+import { openSignin } from "../../../features/navbarSlice";
+import { toast } from "react-hot-toast";
 const AccountSignIn = ({ setRegister }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [signinValues, setSigninValues] = useState({
     email: "",
     password: "",
   });
+  const dispatch = useDispatch();
 
-  const handleLoginUser =async(e)=>{
+  const handleLoginUser = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post('https://blogserver.vercel.app/api/v1/user', signinValues);
-      console.log(response);
-      
-    } catch (error) {
-      console.log(error)
-    }
-  }
 
-  
+    try {
+      const response = await axios.post(
+        "https://blogserver.vercel.app/api/v1/user/login",
+        signinValues
+      );
+      console.log(response);
+      if (response?.data?.message == "match") {
+        console.log((response?.data?.user))
+        dispatch(login({name:response?.data?.user?.name, email:response?.data?.user?.email}));
+        dispatch(openSignin({ signin: false }));
+        toast.success("Weclome back!!!");
+      } else {
+        toast.error("Invalid Credentials!!!");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleValuesChange = (e) => {
     setSigninValues((prev) => {
       return { ...prev, [e.target.name]: e.target.value };
@@ -28,12 +42,15 @@ const AccountSignIn = ({ setRegister }) => {
   };
   return (
     <div className="overflow-auto">
-      <form onSubmit={handleLoginUser}> 
+      <form onSubmit={handleLoginUser}>
         <div>
-          <p className="text-gray-800 font-bold text-base md:text-xl my-1"> Email</p>
+          <p className="text-gray-800 font-bold text-base md:text-xl my-1">
+            {" "}
+            Email
+          </p>
           <div className="flex justify-between items-center py-1 md:py-2 px-1 md:px-2 border border-gray-700 rounded  ">
             <input
-            required
+              required
               type="text"
               placeholder="Enter your email"
               name="email"
@@ -50,7 +67,7 @@ const AccountSignIn = ({ setRegister }) => {
           </p>
           <div className="flex justify-between items-center py-1 md:py-2 px-1 md:px-2 border border-gray-700 rounded my-1 ">
             <input
-            required
+              required
               type={passwordVisible ? "text" : "password"}
               placeholder="Enter your password"
               name="password"
@@ -79,7 +96,7 @@ const AccountSignIn = ({ setRegister }) => {
       </form>
       <div className="flex justify-center mt-3">
         <button
-          onClick={() => setRegister(prev=>!prev)}
+          onClick={() => setRegister((prev) => !prev)}
           className="max-w-[300px] border border-[#2c8bb4] hover:bg-[#33a1d1] hover:text-white font-semibold text-[#2c8bb4]  px-3 py-1  rounded"
         >
           Create an account

@@ -6,12 +6,14 @@ import classes from "./Home.module.css";
 import { HiPlus } from "react-icons/hi";
 import { MdKeyboardArrowUp } from "react-icons/md";
 import AddBlog from "../AddBlog/AddBlog";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import { openSignin } from "../../features/navbarSlice";
+import { toast } from "react-hot-toast";
 const Home = () => {
   const [modal, setModal] = useState(false);
   const state = useSelector((store) => store.auth);
-
+  const dispatch = useDispatch();
   window.scroll({ top: 0, left: 0 });
 
   const getblogData = async () => {
@@ -24,9 +26,9 @@ const Home = () => {
       console.log(error);
     }
   };
-  // useEffect(() => {
-  //   getblogData();
-  // }, []);
+  useEffect(() => {
+    getblogData();
+  }, []);
   return (
     <div
       onScroll={() => {
@@ -44,7 +46,14 @@ const Home = () => {
         <Header />
         <MainSection />
         <button
-          onClick={() => setModal(true)}
+          onClick={() => {
+            if (state?.isAuth) {
+              setModal(true);
+            } else {
+              toast.error("Please Login to your account");
+              dispatch(openSignin({ signin: true }));
+            }
+          }}
           className={`${classes.addBlog} fixed top-[140px] left-2 bg-white rounded-full border border-gray-700`}
         >
           <HiPlus className="w-[30px] h-[30px] mx-3 my-3" />

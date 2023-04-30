@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { toast } from "react-hot-toast";
 import { AiFillEye, AiOutlineEye, AiOutlineMail } from "react-icons/ai";
 import { FaRegUser } from "react-icons/fa";
 
@@ -10,16 +11,25 @@ const RegisterUser = ({ setRegister }) => {
     email: "",
     password: "",
   });
-  const handleRegisterUser =async(e)=>{
+  const handleRegisterUser = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get('https://blogserver.vercel.app/api/v1/user', signUpValues);
-      console.log(response);
-      
+      const response = await axios.post(
+        "https://blogserver.vercel.app/api/v1/user",
+        signUpValues
+      );
+      if (response?.data?.name) {
+        toast.success(
+          `Congratulation ${response?.data?.name}. Welcome to the Ship`
+        );
+        setRegister(false);
+      } else {
+        toast.error("Some Error occured. Please try again.");
+      }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   const handleValuesChange = (e) => {
     setSignUPValues((prev) => {
@@ -31,12 +41,11 @@ const RegisterUser = ({ setRegister }) => {
       <form onSubmit={handleRegisterUser}>
         <div>
           <p className="text-gray-800 font-bold text-base md:text-xl my-1">
-           
             User Name
           </p>
           <div className="flex justify-between items-center py-1 md:py-2 px-1 md:px-2 border border-gray-700 rounded  ">
             <input
-            required
+              required
               type="text"
               placeholder="Enter your full name"
               name="name"
@@ -53,7 +62,7 @@ const RegisterUser = ({ setRegister }) => {
           </p>
           <div className="flex justify-between items-center py-1 md:py-2 px-1 md:px-2 border border-gray-700 rounded  ">
             <input
-             required
+              required
               type="email"
               placeholder="Enter your email"
               name="email"
@@ -70,7 +79,7 @@ const RegisterUser = ({ setRegister }) => {
           </p>
           <div className="flex justify-between items-center py-1 md:py-2 px-1 md:px-2 border border-gray-700 rounded my-1 ">
             <input
-             required
+              required
               type={passwordVisible ? "text" : "password"}
               placeholder="Enter your password"
               name="password"
