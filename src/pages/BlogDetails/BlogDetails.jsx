@@ -8,10 +8,13 @@ import classes from './Blog.module.css';
 import AddBlog from '../AddBlog/AddBlog';
 import { toast } from 'react-hot-toast';
 import { openSignin } from '../../features/navbarSlice';
+import { useLocation, useParams } from 'react-router-dom';
 
 const BlogDetails = () => {
   const [modal, setModal] = useState(false);
   const state = useSelector((store) => store.auth);
+  const {id} = useParams();
+ 
   const dispatch = useDispatch();
   window.scroll({ top: 0, left: 0 });
  
@@ -20,7 +23,7 @@ const BlogDetails = () => {
          <img src={'/images/5335387.jpg'} alt="" className='fixed w-[100vw] h-[100vh] top-1 z-[-1] object-cover'/>
       <div>
         <NavBar/>
-        <MainSection/>
+        <MainSection id={id}/>
         <button
          onClick={() => {
           if (state?.isAuth) {

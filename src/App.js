@@ -15,7 +15,7 @@ function App() {
     <div >
       <Routes>
       <Route path='/' element={<Home/>}/>
-      <Route path='/blog' element={<BlogDetails/>}/>
+      <Route path='/blog/:id' element={<BlogDetails/>}/>
       </Routes>
       {
           signin && <UserAccount/>

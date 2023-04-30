@@ -12,6 +12,7 @@ import { openSignin } from "../../features/navbarSlice";
 import { toast } from "react-hot-toast";
 const Home = () => {
   const [modal, setModal] = useState(false);
+  const [blogList, setBlogList] = useState([]);
   const state = useSelector((store) => store.auth);
   const dispatch = useDispatch();
   window.scroll({ top: 0, left: 0 });
@@ -22,6 +23,7 @@ const Home = () => {
         "https://blogserver.vercel.app/api/v1/blog"
       );
       console.log(response);
+      setBlogList(response?.data?.blogs);
     } catch (error) {
       console.log(error);
     }
@@ -43,8 +45,8 @@ const Home = () => {
       />
       <div>
         <NavBar />
-        <Header />
-        <MainSection />
+        <Header blogList={blogList} />
+        <MainSection blogList={blogList} />
         <button
           onClick={() => {
             if (state?.isAuth) {
@@ -68,7 +70,7 @@ const Home = () => {
           <MdKeyboardArrowUp className="w-[30px] h-[30px] mx-3 my-3" />
         </button>
       </div>
-      <AddBlog modal={modal} setModal={setModal} />
+      <AddBlog getblogData={getblogData} modal={modal} setModal={setModal} />
     </div>
   );
 };

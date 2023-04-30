@@ -4,7 +4,8 @@ import { RxCross2 } from "react-icons/rx";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useSelector } from "react-redux";
-const AddBlog = ({ modal, setModal }) => {
+
+const AddBlog = ({ modal, setModal, getblogData }) => {
   const { name } = useSelector((state) => state.auth);
   const [blogData, setBlogData] = useState({
     title: "",
@@ -34,7 +35,8 @@ const AddBlog = ({ modal, setModal }) => {
         category: "",
         content: "",
         tags: [],
-      })
+      });
+      getblogData()
       setModal(false);
     } catch (error) {
       console.log(error);

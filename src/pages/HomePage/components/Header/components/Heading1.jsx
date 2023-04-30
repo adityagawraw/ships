@@ -1,9 +1,9 @@
 import React from "react";
 import classes from "../Header.module.css";
 import { Link } from "react-router-dom";
-const Heading1 = ({ data }) => {
+const Heading1 = ({ data ,blogList}) => {
   return (
-    <Link to={'/blog'}>
+    <Link to={`/blog/${blogList[0]?._id}`}>
     <div
       className={` max-h-[430px] rounded-xl relative border border-gray-700 px-4 py-5`}
       style={{ backgroundColor: data?.color }}
@@ -24,9 +24,9 @@ const Heading1 = ({ data }) => {
           </div>
         </div>
         <div className="text-white px-3 mb-4">
-          <p className="font-semibold text-2xl"> {data.heading} </p>
+          <p className="font-semibold text-2xl"> {data?.heading} </p>
           <div className="flex items-center text-gray-200">
-            <p className= "  font-semibold py-2"> Don Jones </p>
+            <p className= "  font-semibold py-2">Don Peter </p>
             <div className="w-2 h-2 rounded bg-gray-200 mt-1 mx-4"></div>
             <span className="font-semibold py-2">
               Dec 2 , 2023

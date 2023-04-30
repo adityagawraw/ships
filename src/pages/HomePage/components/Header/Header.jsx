@@ -2,14 +2,15 @@ import React from "react";
 import classes from "./Header.module.css";
 import Heading1 from "./components/Heading1";
 import Heading2 from "./components/Heading2";
-const Header = () => {
+const Header = ({blogList}) => {
+
   return (
     <div className="flex justify-center py-6">
       <div className={classes.header}>
-        <Heading1 data={arr[0]} />
+        <Heading1 data={arr[0]} blogList={blogList}/>
         <div className="flex flex-col gap-2 ">
-          <Heading2 data={arr[1]} />
-          <Heading2 data={arr[2]} />
+          <Heading2 data={arr[1]} blogList={blogList}/>
+          <Heading2 data={arr[2]} blogList={blogList}/>
         </div>
       </div>
     </div>
@@ -44,7 +45,7 @@ const arr = [
     tagColor: "#e0fada",
   },
   {
-    image: "/images/code.jpg",
+    image: "/images/drone.jpg",
     heading: " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     category: "sport",
     description:
